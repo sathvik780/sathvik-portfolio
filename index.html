@@ -1,158 +1,536 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Chandupatla Sathvik | Personal Website</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chandupatla Sathvik | Portfolio</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"/>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
 
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(to right, #eef2f3, #dfe9f3);
-            color: #333;
-        }
+  <style>
+    :root {
+      --navy:   #0d1b2a;
+      --ink:    #1b2a3b;
+      --sky:    #3b8beb;
+      --sky-lt: #6aaff5;
+      --gold:   #f0b429;
+      --cream:  #f9f6f0;
+      --muted:  #7a8a99;
+      --card-bg:#ffffff;
+    }
 
-        header {
-            background-color: #1f2937;
-            color: white;
-            text-align: center;
-            padding: 40px 20px;
-        }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        header h1 {
-            font-size: 32px;
-            margin-bottom: 10px;
-        }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
 
-        header p {
-            font-size: 18px;
-            opacity: 0.9;
-        }
+    /* ── HERO ─────────────────────────────────────────── */
+    .hero {
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+      padding: 90px 0 70px;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 80% 30%, rgba(59,139,235,0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 10% 80%, rgba(240,180,41,0.10) 0%, transparent 55%);
+    }
+    .hero-grid-lines {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
 
-        .container {
-            width: 85%;
-            max-width: 900px;
-            margin: 30px auto;
-        }
+    .avatar-ring {
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--sky), var(--gold));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.8rem; font-weight: 900;
+      color: #fff;
+      font-family: 'Playfair Display', serif;
+      box-shadow: 0 0 0 4px rgba(255,255,255,0.08), 0 8px 32px rgba(0,0,0,0.4);
+      letter-spacing: -1px;
+      flex-shrink: 0;
+    }
 
-        .card {
-            background-color: white;
-            padding: 25px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.1;
+      letter-spacing: -1px;
+    }
+    .hero-sub {
+      color: var(--sky-lt);
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      margin-top: 6px;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(240,180,41,0.15);
+      border: 1px solid rgba(240,180,41,0.4);
+      color: var(--gold);
+      border-radius: 30px;
+      padding: 4px 14px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      margin-top: 10px;
+    }
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
-        }
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--sky);
+      color: #fff;
+      border-radius: 8px;
+      padding: 10px 22px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      margin-top: 18px;
+      margin-right: 10px;
+    }
+    .hero-cta:hover { background: var(--sky-lt); transform: translateY(-2px); color:#fff; }
+    .hero-cta.outline {
+      background: transparent;
+      border: 1.5px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.85);
+    }
+    .hero-cta.outline:hover { border-color: var(--sky-lt); color:#fff; background: rgba(59,139,235,0.12); }
 
-        h2 {
-            margin-bottom: 15px;
-            color: #1f2937;
-            border-left: 4px solid #3b82f6;
-            padding-left: 10px;
-        }
+    /* ── SECTION TITLES ───────────────────────────────── */
+    .sec-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: var(--sky);
+      margin-bottom: 4px;
+    }
+    .sec-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.65rem;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+    .sec-divider {
+      width: 40px; height: 3px;
+      background: linear-gradient(90deg, var(--sky), var(--gold));
+      border-radius: 2px;
+      margin: 10px 0 24px;
+    }
 
-        ul {
-            margin-left: 20px;
-            line-height: 1.8;
-        }
+    /* ── CARDS ────────────────────────────────────────── */
+    .profile-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 28px 30px;
+      box-shadow: 0 2px 20px rgba(13,27,42,0.07);
+      height: 100%;
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+      border: 1px solid rgba(0,0,0,0.045);
+    }
+    .profile-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 36px rgba(13,27,42,0.13);
+    }
 
-        .contact p {
-            margin: 8px 0;
-        }
+    /* ── SKILLS ───────────────────────────────────────── */
+    .skill-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: #f0f4ff;
+      color: #2563eb;
+      border-radius: 7px;
+      padding: 6px 13px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      margin: 4px;
+      border: 1px solid #dbeafe;
+      transition: background 0.18s, transform 0.18s;
+    }
+    .skill-tag:hover { background: #dbeafe; transform: scale(1.05); }
+    .skill-tag.core { background: #fdf4ff; color: #7c3aed; border-color: #ede9fe; }
+    .skill-tag.web  { background: #ecfdf5; color: #059669; border-color: #d1fae5; }
 
-        footer {
-            text-align: center;
-            padding: 15px;
-            background-color: #1f2937;
-            color: white;
-            margin-top: 20px;
-        }
+    /* ── TIMELINE ─────────────────────────────────────── */
+    .timeline-item {
+      position: relative;
+      padding-left: 36px;
+      padding-bottom: 22px;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute; left: 8px; top: 10px; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--sky), transparent);
+    }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-item:last-child::before { display: none; }
+    .timeline-dot {
+      position: absolute; left: 0; top: 4px;
+      width: 18px; height: 18px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--sky), var(--gold));
+      box-shadow: 0 0 0 3px rgba(59,139,235,0.18);
+    }
+    .timeline-title { font-weight: 600; font-size: 0.98rem; color: var(--ink); }
+    .timeline-sub   { color: var(--muted); font-size: 0.84rem; margin-top: 2px; }
 
-        @media (max-width: 600px) {
-            header h1 {
-                font-size: 24px;
-            }
+    /* ── ACHIEVEMENT CARD ─────────────────────────────── */
+    .achieve-card {
+      background: linear-gradient(135deg, #0d1b2a 60%, #173358);
+      border-radius: 14px;
+      padding: 22px 24px;
+      color: #fff;
+      display: flex; align-items: center; gap: 18px;
+      box-shadow: 0 4px 20px rgba(13,27,42,0.18);
+      border: 1px solid rgba(255,255,255,0.07);
+      transition: transform 0.2s;
+    }
+    .achieve-card:hover { transform: translateY(-4px); }
+    .achieve-icon {
+      font-size: 2rem; color: var(--gold);
+      background: rgba(240,180,41,0.12);
+      border-radius: 50%; width: 56px; height: 56px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .achieve-title { font-weight: 600; font-size: 1rem; }
+    .achieve-sub { font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-top: 2px; }
 
-            .container {
-                width: 95%;
-            }
-        }
-    </style>
+    /* ── CERT CARD ────────────────────────────────────── */
+    .cert-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 18px 20px;
+      border-left: 4px solid var(--sky);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      display: flex; align-items: center; gap: 14px;
+      transition: transform 0.2s;
+    }
+    .cert-card:hover { transform: translateY(-3px); }
+    .cert-icon { font-size: 1.6rem; color: var(--sky); }
+
+    /* ── CONTACT STRIP ────────────────────────────────── */
+    .contact-strip {
+      background: var(--navy);
+      border-radius: 16px;
+      padding: 30px 36px;
+      display: flex; flex-wrap: wrap; gap: 20px;
+      align-items: center; justify-content: space-between;
+    }
+    .contact-item {
+      display: flex; align-items: center; gap: 10px;
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.18s;
+    }
+    .contact-item:hover { color: var(--sky-lt); }
+    .contact-item i { color: var(--sky); font-size: 1.1rem; }
+
+    /* ── FOOTER ───────────────────────────────────────── */
+    footer {
+      background: #060e17;
+      text-align: center;
+      padding: 18px;
+      color: rgba(255,255,255,0.35);
+      font-size: 0.8rem;
+    }
+
+    /* ── ANIMATIONS ───────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity:0; transform: translateY(22px); }
+      to   { opacity:1; transform: translateY(0); }
+    }
+    .fade-up { animation: fadeUp 0.6s ease both; }
+    .d1 { animation-delay: 0.1s; }
+    .d2 { animation-delay: 0.22s; }
+    .d3 { animation-delay: 0.34s; }
+    .d4 { animation-delay: 0.46s; }
+
+    /* mobile tweaks */
+    @media (max-width: 576px) {
+      .hero { padding: 60px 0 50px; }
+      .contact-strip { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
 </head>
-
 <body>
 
-    <header>
-        <h1>Chandupatla Sathvik</h1>
-        <p>BE Information Technology | 2nd Year | Vasavi College of Engineering</p>
-    </header>
+<!-- ════════════ HERO ════════════ -->
+<section class="hero">
+  <div class="hero-grid-lines"></div>
+  <div class="container position-relative">
+    <div class="d-flex flex-column flex-sm-row align-items-center align-items-sm-start gap-4">
+      <div class="avatar-ring fade-up d1">CS</div>
+      <div class="text-center text-sm-start fade-up d2">
+        <h1 class="hero-name">Chandupatla Sathvik</h1>
+        <p class="hero-sub">BE Information Technology &nbsp;·&nbsp; 2nd Year</p>
+        <p class="hero-sub" style="color:rgba(255,255,255,0.45); font-size:0.88rem;">
+          Vasavi College of Engineering, Hyderabad
+        </p>
+        <span class="hero-badge"><i class="bi bi-trophy-fill me-1"></i>ASME EFX 3rd Prize Winner</span>
+        <br/>
+        <a href="mailto:chandupatla.sathvik@example.com" class="hero-cta">
+          <i class="bi bi-envelope-fill"></i> Get in Touch
+        </a>
+        <a href="tel:9949497631" class="hero-cta outline">
+          <i class="bi bi-telephone-fill"></i> 9949497631
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <div class="container">
+<!-- ════════════ MAIN CONTENT ════════════ -->
+<div class="container py-5">
 
-        <div class="card">
-            <h2>1. Profile Summary / About</h2>
-            <p>
-                I am a passionate Information Technology student with a strong foundation 
-                in programming and core computer science subjects. I enjoy building logical 
-                solutions, exploring new technologies, and continuously strengthening my 
-                problem-solving skills. My goal is to become a skilled software developer 
-                who creates efficient and impactful applications.
-            </p>
+  <!-- ROW 1: About + Education -->
+  <div class="row g-4 mb-4">
+
+    <!-- About -->
+    <div class="col-lg-7">
+      <div class="profile-card fade-up d2">
+        <p class="sec-label">Introduction</p>
+        <h2 class="sec-title">About Me</h2>
+        <div class="sec-divider"></div>
+        <p style="line-height:1.8; color:#444; font-size:0.97rem;">
+          I'm a passionate Information Technology student with a strong foundation in programming
+          and core computer science subjects. I enjoy building logical solutions, exploring new
+          technologies, and continuously strengthening my problem-solving skills.
+        </p>
+        <p style="line-height:1.8; color:#444; font-size:0.97rem; margin-top:12px;">
+          My goal is to become a skilled software developer who creates efficient and impactful
+          applications — blending technical depth with creative thinking.
+        </p>
+        <div class="d-flex flex-wrap gap-2 mt-3">
+          <span class="badge" style="background:#e0f2fe; color:#0369a1; padding:7px 12px; border-radius:7px; font-weight:500;">
+            <i class="bi bi-code-slash me-1"></i>Problem Solver
+          </span>
+          <span class="badge" style="background:#fef3c7; color:#92400e; padding:7px 12px; border-radius:7px; font-weight:500;">
+            <i class="bi bi-cpu me-1"></i>Tech Enthusiast
+          </span>
+          <span class="badge" style="background:#dcfce7; color:#166534; padding:7px 12px; border-radius:7px; font-weight:500;">
+            <i class="bi bi-robot me-1"></i>Robotics Builder
+          </span>
         </div>
-
-        <div class="card">
-            <h2>2. Education / Qualification</h2>
-            <ul>
-                <li><strong>BE in Information Technology</strong></li>
-                <li>Vasavi College of Engineering</li>
-                <li>Currently in 2nd Year</li>
-            </ul>
-        </div>
-
-        <div class="card">
-            <h2>3. Skills</h2>
-            <ul>
-                <li><strong>Languages:</strong> Python, C, C++, Java</li>
-                <li><strong>Web:</strong> HTML, CSS, JavaScript</li>
-                <li><strong>Core:</strong> OOP, Operating Systems, Networking, Data Structures</li>
-            </ul>
-        </div>
-
-        <div class="card">
-            <h2>4. Achievements</h2>
-            <ul>
-                <li>ASME EFX - 3rd Prize Winner</li>
-            </ul>
-        </div>
-
-        <div class="card">
-            <h2>5. Certifications</h2>
-            <ul>
-                <li>NPTEL - Joy of Computing using Python</li>
-            </ul>
-        </div>
-
-        <div class="card contact">
-            <h2>6. Contact</h2>
-            <p>Email: sathvikchanduptla435@gmail.com</p>
-            <p>Phone: 9949497631</p>
-        </div>
-
+      </div>
     </div>
 
-    <footer>
-        © 2026 Chandupatla Sathvik | Personal Website
-    </footer>
+    <!-- Education -->
+    <div class="col-lg-5">
+      <div class="profile-card fade-up d3">
+        <p class="sec-label">Background</p>
+        <h2 class="sec-title">Education</h2>
+        <div class="sec-divider"></div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-title">BE – Information Technology</div>
+          <div class="timeline-sub">Vasavi College of Engineering</div>
+          <div class="timeline-sub">2nd Year &nbsp;·&nbsp; 2023 – Present</div>
+        </div>
+        <div class="timeline-item mt-2">
+          <div class="timeline-dot"></div>
+          <div class="timeline-title">Class XII (Intermediate)</div>
+          <div class="timeline-sub">Board of Intermediate Education, Telangana</div>
+        </div>
+        <div class="timeline-item mt-2">
+          <div class="timeline-dot"></div>
+          <div class="timeline-title">Class X (Secondary School)</div>
+          <div class="timeline-sub">CBSE / State Board</div>
+        </div>
+      </div>
+    </div>
 
+  </div>
+
+  <!-- ROW 2: Skills -->
+  <div class="row g-4 mb-4">
+    <div class="col-12">
+      <div class="profile-card fade-up d2">
+        <p class="sec-label">Expertise</p>
+        <h2 class="sec-title">Skills</h2>
+        <div class="sec-divider"></div>
+
+        <div class="row g-3">
+          <div class="col-md-4">
+            <p class="fw-600 mb-2" style="font-size:0.82rem; color:var(--muted); text-transform:uppercase; letter-spacing:.08em;">Languages</p>
+            <div>
+              <span class="skill-tag"><i class="bi bi-filetype-py"></i> Python</span>
+              <span class="skill-tag"><i class="bi bi-braces"></i> C</span>
+              <span class="skill-tag"><i class="bi bi-braces"></i> C++</span>
+              <span class="skill-tag"><i class="bi bi-cup-hot"></i> Java</span>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <p class="fw-600 mb-2" style="font-size:0.82rem; color:var(--muted); text-transform:uppercase; letter-spacing:.08em;">Web Technologies</p>
+            <div>
+              <span class="skill-tag web"><i class="bi bi-filetype-html"></i> HTML</span>
+              <span class="skill-tag web"><i class="bi bi-filetype-css"></i> CSS</span>
+              <span class="skill-tag web"><i class="bi bi-filetype-js"></i> JavaScript</span>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <p class="fw-600 mb-2" style="font-size:0.82rem; color:var(--muted); text-transform:uppercase; letter-spacing:.08em;">Core Concepts</p>
+            <div>
+              <span class="skill-tag core"><i class="bi bi-layers"></i> OOP</span>
+              <span class="skill-tag core"><i class="bi bi-diagram-3"></i> DSA</span>
+              <span class="skill-tag core"><i class="bi bi-hdd-stack"></i> OS</span>
+              <span class="skill-tag core"><i class="bi bi-wifi"></i> Networking</span>
+              <span class="skill-tag core"><i class="bi bi-database"></i> DBMS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROW 3: Achievements + Certifications -->
+  <div class="row g-4 mb-4">
+
+    <!-- Achievements -->
+    <div class="col-md-6">
+      <div class="profile-card fade-up d2" style="height:100%">
+        <p class="sec-label">Recognition</p>
+        <h2 class="sec-title">Achievements</h2>
+        <div class="sec-divider"></div>
+        <div class="achieve-card">
+          <div class="achieve-icon"><i class="bi bi-trophy-fill"></i></div>
+          <div>
+            <div class="achieve-title">ASME EFX — 3rd Prize</div>
+            <div class="achieve-sub">American Society of Mechanical Engineers · Engineering For Excellence</div>
+            <div class="achieve-sub mt-1">RC Robot Racing Competition</div>
+          </div>
+        </div>
+        <div class="achieve-card mt-3" style="background:linear-gradient(135deg,#14532d 60%,#166534);">
+          <div class="achieve-icon" style="background:rgba(74,222,128,0.12); color:#4ade80;">
+            <i class="bi bi-controller"></i>
+          </div>
+          <div>
+            <div class="achieve-title">RC Robot Racing</div>
+            <div class="achieve-sub">Competitive RC robot design &amp; racing — ₹10,000 budget build</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Certifications -->
+    <div class="col-md-6">
+      <div class="profile-card fade-up d3" style="height:100%">
+        <p class="sec-label">Credentials</p>
+        <h2 class="sec-title">Certifications</h2>
+        <div class="sec-divider"></div>
+        <div class="cert-card">
+          <div class="cert-icon"><i class="bi bi-patch-check-fill"></i></div>
+          <div>
+            <div class="fw-600">NPTEL — Joy of Computing using Python</div>
+            <div style="font-size:0.82rem; color:var(--muted);">IIT Madras &nbsp;·&nbsp; National Programme on Technology Enhanced Learning</div>
+          </div>
+        </div>
+        <div class="cert-card mt-3" style="border-left-color: var(--gold); opacity:0.55;">
+          <div class="cert-icon" style="color:var(--gold);"><i class="bi bi-plus-circle-dotted"></i></div>
+          <div>
+            <div class="fw-600" style="color:var(--muted);">More certifications coming soon…</div>
+            <div style="font-size:0.82rem; color:#aaa;">Stay tuned for updates</div>
+          </div>
+        </div>
+
+        <!-- Quick stats -->
+        <div class="row g-2 mt-4">
+          <div class="col-4 text-center">
+            <div style="font-size:1.6rem; font-weight:800; font-family:'Playfair Display',serif; color:var(--sky);">4+</div>
+            <div style="font-size:0.72rem; color:var(--muted); text-transform:uppercase; letter-spacing:.06em;">Languages</div>
+          </div>
+          <div class="col-4 text-center" style="border-left:1px solid #eee; border-right:1px solid #eee;">
+            <div style="font-size:1.6rem; font-weight:800; font-family:'Playfair Display',serif; color:var(--gold);">1</div>
+            <div style="font-size:0.72rem; color:var(--muted); text-transform:uppercase; letter-spacing:.06em;">Prize Won</div>
+          </div>
+          <div class="col-4 text-center">
+            <div style="font-size:1.6rem; font-weight:800; font-family:'Playfair Display',serif; color:#7c3aed;">2nd</div>
+            <div style="font-size:0.72rem; color:var(--muted); text-transform:uppercase; letter-spacing:.06em;">Year BE IT</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ROW 4: Contact Strip -->
+  <div class="fade-up d4">
+    <p class="sec-label mb-1">Let's Connect</p>
+    <h2 class="sec-title mb-3">Contact</h2>
+    <div class="contact-strip">
+      <div>
+        <p style="color:rgba(255,255,255,0.6); font-size:0.85rem; max-width:340px; line-height:1.6;">
+          Open to collaboration, internship opportunities, and interesting projects. Feel free to reach out!
+        </p>
+      </div>
+      <div class="d-flex flex-wrap gap-4">
+        <a href="mailto:chandupatla.sathvik@example.com" class="contact-item">
+          <i class="bi bi-envelope-fill"></i> chandupatla.sathvik@vceit.ac.in
+        </a>
+        <a href="tel:9949497631" class="contact-item">
+          <i class="bi bi-telephone-fill"></i> +91 9949497631
+        </a>
+        <a href="https://linkedin.com" target="_blank" class="contact-item">
+          <i class="bi bi-linkedin"></i> LinkedIn
+        </a>
+        <a href="https://github.com" target="_blank" class="contact-item">
+          <i class="bi bi-github"></i> GitHub
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ════════════ FOOTER ════════════ -->
+<footer>
+  <p>© 2025 Chandupatla Sathvik &nbsp;·&nbsp; Vasavi College of Engineering &nbsp;·&nbsp; Hyderabad</p>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  // Scroll-triggered fade-in for cards
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.profile-card, .contact-strip, .achieve-card, .cert-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(18px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
 </body>
 </html>
